@@ -15,7 +15,7 @@ class ControllerCategory extends Controller
 
     public function create()
     {
-        return view('categories.newcategory');
+        return view('categories.newCategory');
     }
 
     public function store(Request $request)
@@ -31,11 +31,9 @@ class ControllerCategory extends Controller
     {
         $category = Category::find($id);
 
-        if (isset($category)) {
-            return view('categories.editcategory', compact('category'));
-        }
-
-        return redirect('/categories');
+        return isset($category) 
+            ? view('categories.editCategory', compact('category')) 
+            : redirect('/categories');
     }
 
     public function update(Request $request, $id)

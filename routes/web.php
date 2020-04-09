@@ -10,27 +10,36 @@ Route::get('/', function () {
 // Categories index
 Route::get('/categories', 'ControllerCategory@index')->name('categories');
 
-// Add a new category
+// Add new category
 Route::get('/categories/new', 'ControllerCategory@create');
 
-// Save a category to database
+// Save category to database
 Route::post('/categories', 'ControllerCategory@store');
-
-// Delete a category by id
-Route::get('/categories/delete/{id}', 'ControllerCategory@destroy');
 
 // Edit a category by id
 Route::get('/categories/edit/{id}', 'ControllerCategory@edit');
 
-// Update a category by id
+// Update a category by id after editing
 Route::post('/categories/{id}', 'ControllerCategory@update');
+
+// Delete a category by id
+Route::get('/categories/delete/{id}', 'ControllerCategory@destroy');
 
 /* PRODUCTS ROUTES */
 // Products index
 Route::get('/products', 'ControllerProduct@index')->name('products');
 
-// Add a new product
+// Add new product
 Route::get('/products/new', 'ControllerProduct@create');
 
-//Save a product to database
-Route
+// Save product to database
+Route::post('/products', 'ControllerProduct@store');
+
+// Edit a product by id
+Route::get('/products/edit/{id}', 'ControllerProduct@edit');
+
+// Update a product by id after editing
+Route::post('/products/{id}', 'ControllerProduct@update');
+
+// Delete a product by id
+Route::get('/products/delete/{id}', 'ControllerProduct@destroy');

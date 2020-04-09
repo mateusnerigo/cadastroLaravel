@@ -16,21 +16,23 @@
           <th>Nome</th>
           <th>Estoque</th>
           <th>Preço</th>
+          <th>Categoria</th>
           <th>Gerenciar</th>
         </tr>
       </thead>
       <tbody>
   @foreach ($products as $product)
-      <tr>
-        <th>{{ $product->id }}</th>
-        <th>{{ $product->name }}</th>
-        <th>{{ $product->stock }}</th>
-        <th>{{ $product->price }}</th>
-        <th>
-          <a href="/products/edit/{{ $product->id }}" class="btn btn-sm btn-primary">Editar</a>
-          <a href="/products/delete/{{ $product->id }}" class="btn btn-sm btn-danger">Excluir</a>
-        </th>
-      </tr>
+        <tr>
+          <td>{{ $product->id }}</td>
+          <td>{{ $product->name }}</td>
+          <td>{{ $product->stock }} un.</td>
+          <td>R$ {{ $product->price }}</td>
+          <td>{{ $categories->find($product->category_id)->name }}</td>
+          <td>
+            <a href="/products/edit/{{ $product->id }}" class="btn btn-sm btn-primary">Editar</a>
+            <a href="/products/delete/{{ $product->id }}" class="btn btn-sm btn-danger">Excluir</a>
+          </td>
+        </tr>
   @endforeach
       </tbody>
     </table>
