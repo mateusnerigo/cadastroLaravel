@@ -4,6 +4,7 @@
     
 <div class="card border">
   <div class="card-body">
+  @if (count($categories) > 0)      
     <form action="/products" method="POST">
       @csrf
       <div class="form-row">
@@ -40,6 +41,9 @@
       <a href="/products" class="btn btn-sm btn-danger">Cancelar</a>
 
     </form>
+  @else
+      <h5 class="card-title">Não há categorias criadas para o cadastramento de novos produtos. Por favor cadastre novas categorias para proceder.</h5>
+  @endif
   </div>
 </div>
 
