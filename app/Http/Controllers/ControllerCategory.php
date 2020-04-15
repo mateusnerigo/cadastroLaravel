@@ -20,6 +20,15 @@ class ControllerCategory extends Controller
 
     public function store(Request $request)
     {
+        $msg = [
+            'categoryName.required' => 'Por favor, insira o nome da categoria',
+            'categoryName.unique' => 'Essa categoria já está cadastrada'
+        ];
+
+        $request->validate([
+            'categoryName' => 'required|unique:App\Category,name',
+        ], $msg);
+
         $category = new Category();
         $category->name = $request->input('categoryName');
         $category->save();
@@ -39,6 +48,15 @@ class ControllerCategory extends Controller
     public function update(Request $request, $id)
     {
         $category = Category::find($id);
+
+        $msg = [
+            'categoryName.required' => 'Por favor, insira o novo nome da categoria',
+            'categoryName.unique' => 'Essa categoria já está cadastrada'
+        ];
+        
+        $request->validate([
+            'categoryName' => 'required|unique:App\Category,name',
+        ], $msg);
 
         if (isset($category)) {
             $category->name = $request->input('categoryName');
